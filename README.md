@@ -31,23 +31,31 @@ PostgreSQL wird als persistenter Datenspeicher für Benutzer, Roboter und die Po
 ## Quick Start
 
 cp .env.example .env
+
 docker compose up --build
 
 Frontend: http://localhost:5173
+
 API: http://localhost:5001
 
 ## Demo Credentials
 
 Email: admin@test.com
+
 Password: test123
 
 ## API Endpoints
 
 POST /auth/login
+
 GET /robots
+
 POST /robots
+
 POST /robots/:id/move
+
 PATCH /robots/:id/status
+
 GET /robots/:id/positions?date=YYYY-MM-DD
 
 ## Screenshots
