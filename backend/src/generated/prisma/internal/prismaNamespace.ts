@@ -398,7 +398,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   User: 'User',
-  Robot: 'Robot'
+  Robot: 'Robot',
+  RobotPosition: 'RobotPosition'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "robot"
+    modelProps: "user" | "robot" | "robotPosition"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -566,6 +567,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RobotPosition: {
+      payload: Prisma.$RobotPositionPayload<ExtArgs>
+      fields: Prisma.RobotPositionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RobotPositionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RobotPositionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>
+        }
+        findFirst: {
+          args: Prisma.RobotPositionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RobotPositionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>
+        }
+        findMany: {
+          args: Prisma.RobotPositionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>[]
+        }
+        create: {
+          args: Prisma.RobotPositionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>
+        }
+        createMany: {
+          args: Prisma.RobotPositionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RobotPositionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>[]
+        }
+        delete: {
+          args: Prisma.RobotPositionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>
+        }
+        update: {
+          args: Prisma.RobotPositionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>
+        }
+        deleteMany: {
+          args: Prisma.RobotPositionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RobotPositionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RobotPositionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>[]
+        }
+        upsert: {
+          args: Prisma.RobotPositionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RobotPositionPayload>
+        }
+        aggregate: {
+          args: Prisma.RobotPositionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRobotPosition>
+        }
+        groupBy: {
+          args: Prisma.RobotPositionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RobotPositionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RobotPositionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RobotPositionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -625,6 +700,17 @@ export const RobotScalarFieldEnum = {
 } as const
 
 export type RobotScalarFieldEnum = (typeof RobotScalarFieldEnum)[keyof typeof RobotScalarFieldEnum]
+
+
+export const RobotPositionScalarFieldEnum = {
+  id: 'id',
+  robotId: 'robotId',
+  lat: 'lat',
+  lon: 'lon',
+  createdAt: 'createdAt'
+} as const
+
+export type RobotPositionScalarFieldEnum = (typeof RobotPositionScalarFieldEnum)[keyof typeof RobotPositionScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -871,6 +957,7 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   robot?: Prisma.RobotOmit
+  robotPosition?: Prisma.RobotPositionOmit
 }
 
 /* Types for Logging */

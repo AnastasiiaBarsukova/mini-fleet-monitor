@@ -228,6 +228,7 @@ export type RobotWhereInput = {
   lat?: Prisma.FloatFilter<"Robot"> | number
   lon?: Prisma.FloatFilter<"Robot"> | number
   updatedAt?: Prisma.DateTimeFilter<"Robot"> | Date | string
+  positions?: Prisma.RobotPositionListRelationFilter
 }
 
 export type RobotOrderByWithRelationInput = {
@@ -237,6 +238,7 @@ export type RobotOrderByWithRelationInput = {
   lat?: Prisma.SortOrder
   lon?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  positions?: Prisma.RobotPositionOrderByRelationAggregateInput
 }
 
 export type RobotWhereUniqueInput = Prisma.AtLeast<{
@@ -249,6 +251,7 @@ export type RobotWhereUniqueInput = Prisma.AtLeast<{
   lat?: Prisma.FloatFilter<"Robot"> | number
   lon?: Prisma.FloatFilter<"Robot"> | number
   updatedAt?: Prisma.DateTimeFilter<"Robot"> | Date | string
+  positions?: Prisma.RobotPositionListRelationFilter
 }, "id">
 
 export type RobotOrderByWithAggregationInput = {
@@ -284,6 +287,7 @@ export type RobotCreateInput = {
   lat: number
   lon: number
   updatedAt?: Date | string
+  positions?: Prisma.RobotPositionCreateNestedManyWithoutRobotInput
 }
 
 export type RobotUncheckedCreateInput = {
@@ -293,6 +297,7 @@ export type RobotUncheckedCreateInput = {
   lat: number
   lon: number
   updatedAt?: Date | string
+  positions?: Prisma.RobotPositionUncheckedCreateNestedManyWithoutRobotInput
 }
 
 export type RobotUpdateInput = {
@@ -302,6 +307,7 @@ export type RobotUpdateInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lon?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  positions?: Prisma.RobotPositionUpdateManyWithoutRobotNestedInput
 }
 
 export type RobotUncheckedUpdateInput = {
@@ -311,6 +317,7 @@ export type RobotUncheckedUpdateInput = {
   lat?: Prisma.FloatFieldUpdateOperationsInput | number
   lon?: Prisma.FloatFieldUpdateOperationsInput | number
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  positions?: Prisma.RobotPositionUncheckedUpdateManyWithoutRobotNestedInput
 }
 
 export type RobotCreateManyInput = {
@@ -377,6 +384,11 @@ export type RobotSumOrderByAggregateInput = {
   lon?: Prisma.SortOrder
 }
 
+export type RobotScalarRelationFilter = {
+  is?: Prisma.RobotWhereInput
+  isNot?: Prisma.RobotWhereInput
+}
+
 export type EnumRobotStatusFieldUpdateOperationsInput = {
   set?: $Enums.RobotStatus
 }
@@ -389,6 +401,101 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type RobotCreateNestedOneWithoutPositionsInput = {
+  create?: Prisma.XOR<Prisma.RobotCreateWithoutPositionsInput, Prisma.RobotUncheckedCreateWithoutPositionsInput>
+  connectOrCreate?: Prisma.RobotCreateOrConnectWithoutPositionsInput
+  connect?: Prisma.RobotWhereUniqueInput
+}
+
+export type RobotUpdateOneRequiredWithoutPositionsNestedInput = {
+  create?: Prisma.XOR<Prisma.RobotCreateWithoutPositionsInput, Prisma.RobotUncheckedCreateWithoutPositionsInput>
+  connectOrCreate?: Prisma.RobotCreateOrConnectWithoutPositionsInput
+  upsert?: Prisma.RobotUpsertWithoutPositionsInput
+  connect?: Prisma.RobotWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.RobotUpdateToOneWithWhereWithoutPositionsInput, Prisma.RobotUpdateWithoutPositionsInput>, Prisma.RobotUncheckedUpdateWithoutPositionsInput>
+}
+
+export type RobotCreateWithoutPositionsInput = {
+  id?: string
+  name: string
+  status?: $Enums.RobotStatus
+  lat: number
+  lon: number
+  updatedAt?: Date | string
+}
+
+export type RobotUncheckedCreateWithoutPositionsInput = {
+  id?: string
+  name: string
+  status?: $Enums.RobotStatus
+  lat: number
+  lon: number
+  updatedAt?: Date | string
+}
+
+export type RobotCreateOrConnectWithoutPositionsInput = {
+  where: Prisma.RobotWhereUniqueInput
+  create: Prisma.XOR<Prisma.RobotCreateWithoutPositionsInput, Prisma.RobotUncheckedCreateWithoutPositionsInput>
+}
+
+export type RobotUpsertWithoutPositionsInput = {
+  update: Prisma.XOR<Prisma.RobotUpdateWithoutPositionsInput, Prisma.RobotUncheckedUpdateWithoutPositionsInput>
+  create: Prisma.XOR<Prisma.RobotCreateWithoutPositionsInput, Prisma.RobotUncheckedCreateWithoutPositionsInput>
+  where?: Prisma.RobotWhereInput
+}
+
+export type RobotUpdateToOneWithWhereWithoutPositionsInput = {
+  where?: Prisma.RobotWhereInput
+  data: Prisma.XOR<Prisma.RobotUpdateWithoutPositionsInput, Prisma.RobotUncheckedUpdateWithoutPositionsInput>
+}
+
+export type RobotUpdateWithoutPositionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRobotStatusFieldUpdateOperationsInput | $Enums.RobotStatus
+  lat?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon?: Prisma.FloatFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type RobotUncheckedUpdateWithoutPositionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumRobotStatusFieldUpdateOperationsInput | $Enums.RobotStatus
+  lat?: Prisma.FloatFieldUpdateOperationsInput | number
+  lon?: Prisma.FloatFieldUpdateOperationsInput | number
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type RobotCountOutputType
+ */
+
+export type RobotCountOutputType = {
+  positions: number
+}
+
+export type RobotCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  positions?: boolean | RobotCountOutputTypeCountPositionsArgs
+}
+
+/**
+ * RobotCountOutputType without action
+ */
+export type RobotCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RobotCountOutputType
+   */
+  select?: Prisma.RobotCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * RobotCountOutputType without action
+ */
+export type RobotCountOutputTypeCountPositionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RobotPositionWhereInput
+}
 
 
 export type RobotSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -398,6 +505,8 @@ export type RobotSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   lat?: boolean
   lon?: boolean
   updatedAt?: boolean
+  positions?: boolean | Prisma.Robot$positionsArgs<ExtArgs>
+  _count?: boolean | Prisma.RobotCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["robot"]>
 
 export type RobotSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -428,10 +537,18 @@ export type RobotSelectScalar = {
 }
 
 export type RobotOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "status" | "lat" | "lon" | "updatedAt", ExtArgs["result"]["robot"]>
+export type RobotInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  positions?: boolean | Prisma.Robot$positionsArgs<ExtArgs>
+  _count?: boolean | Prisma.RobotCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type RobotIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type RobotIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $RobotPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Robot"
-  objects: {}
+  objects: {
+    positions: Prisma.$RobotPositionPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
@@ -833,6 +950,7 @@ readonly fields: RobotFieldRefs;
  */
 export interface Prisma__RobotClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  positions<T extends Prisma.Robot$positionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Robot$positionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RobotPositionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -885,6 +1003,10 @@ export type RobotFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
+  /**
    * Filter, which Robot to fetch.
    */
   where: Prisma.RobotWhereUniqueInput
@@ -903,6 +1025,10 @@ export type RobotFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
+  /**
    * Filter, which Robot to fetch.
    */
   where: Prisma.RobotWhereUniqueInput
@@ -920,6 +1046,10 @@ export type RobotFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Robot
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
   /**
    * Filter, which Robot to fetch.
    */
@@ -969,6 +1099,10 @@ export type RobotFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
+  /**
    * Filter, which Robot to fetch.
    */
   where?: Prisma.RobotWhereInput
@@ -1016,6 +1150,10 @@ export type RobotFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Robot
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
   /**
    * Filter, which Robots to fetch.
    */
@@ -1065,6 +1203,10 @@ export type RobotCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
+  /**
    * The data needed to create a Robot.
    */
   data: Prisma.XOR<Prisma.RobotCreateInput, Prisma.RobotUncheckedCreateInput>
@@ -1112,6 +1254,10 @@ export type RobotUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Robot
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
   /**
    * The data needed to update a Robot.
    */
@@ -1179,6 +1325,10 @@ export type RobotUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
+  /**
    * The filter to search for the Robot to update in case it exists.
    */
   where: Prisma.RobotWhereUniqueInput
@@ -1205,6 +1355,10 @@ export type RobotDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
+  /**
    * Filter which Robot to delete.
    */
   where: Prisma.RobotWhereUniqueInput
@@ -1225,6 +1379,30 @@ export type RobotDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Robot.positions
+ */
+export type Robot$positionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RobotPosition
+   */
+  select?: Prisma.RobotPositionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RobotPosition
+   */
+  omit?: Prisma.RobotPositionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotPositionInclude<ExtArgs> | null
+  where?: Prisma.RobotPositionWhereInput
+  orderBy?: Prisma.RobotPositionOrderByWithRelationInput | Prisma.RobotPositionOrderByWithRelationInput[]
+  cursor?: Prisma.RobotPositionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RobotPositionScalarFieldEnum | Prisma.RobotPositionScalarFieldEnum[]
+}
+
+/**
  * Robot without action
  */
 export type RobotDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1236,4 +1414,8 @@ export type RobotDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Robot
    */
   omit?: Prisma.RobotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RobotInclude<ExtArgs> | null
 }

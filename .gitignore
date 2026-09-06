@@ -1,21 +1,12 @@
-# Dependencies
-node_modules/
-
-# Environment variables
 .env
-.env.*
 
-# Build files
-dist/
-build/
+**/node_modules/
+**/dist/
 
-# Logs
-*.log
+backend/src/generated/
 
-# IDE
-.vscode/
-.idea/
-
-# OS files
 .DS_Store
 Thumbs.db
+
+.vscode/
+.idea/

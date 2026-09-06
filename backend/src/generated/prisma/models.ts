@@ -10,4 +10,5 @@
  */
 export type * from './models/User.js'
 export type * from './models/Robot.js'
+export type * from './models/RobotPosition.js'
 export type * from './commonInputTypes.js'

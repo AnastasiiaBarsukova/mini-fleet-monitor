@@ -6,6 +6,7 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
 model User {
   id           String   @id @default(uuid(7)) @db.Uuid
   email        String   @unique
@@ -16,14 +17,27 @@ model User {
 }
 
 model Robot {
-  id        String      @id @default(uuid(7)) @db.Uuid
+  id        String          @id @default(uuid(7)) @db.Uuid
   name      String
-  status    RobotStatus @default(idle)
+  status    RobotStatus     @default(idle)
   lat       Float
   lon       Float
-  updatedAt DateTime    @updatedAt @map("updated_at")
+  updatedAt DateTime        @updatedAt @map("updated_at")
+  positions RobotPosition[]
 
   @@map("robots")
+}
+
+model RobotPosition {
+  id        String   @id @default(uuid(7)) @db.Uuid
+  robot     Robot    @relation(fields: [robotId], references: [id], onDelete: Cascade)
+  robotId   String   @map("robot_id") @db.Uuid
+  lat       Float
+  lon       Float
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([robotId, createdAt])
+  @@map("robot_positions")
 }
 
 enum RobotStatus {

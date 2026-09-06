@@ -1,31 +1,26 @@
-const API_URL = "http://localhost:5001";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
-export async function apiClient<T>(
-  path: string,
-  options: RequestInit = {}
-): Promise<T> {
-  const token = localStorage.getItem("token");
+export async function apiClient<T>(path: string, options: RequestInit = {}): Promise<T> {
+	const token = localStorage.getItem("token");
 
-  const response = await fetch(`${API_URL}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
+	const response = await fetch(`${API_URL}${path}`, {
+		...options,
+		headers: {
+			"Content-Type": "application/json",
 
-      ...(token && {
-        Authorization: `Bearer ${token}`,
-      }),
+			...(token && {
+				Authorization: `Bearer ${token}`,
+			}),
 
-      ...options.headers,
-    },
-  });
+			...options.headers,
+		},
+	});
 
-  const data = await response.json();
+	const data = await response.json();
 
-  if (!response.ok) {
-    throw new Error(
-      data.error || "API request failed"
-    );
-  }
+	if (!response.ok) {
+		throw new Error(data.error || "API request failed");
+	}
 
-  return data as T;
+	return data as T;
 }

@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Robot: 'Robot'
+  Robot: 'Robot',
+  RobotPosition: 'RobotPosition'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -91,6 +92,17 @@ export const RobotScalarFieldEnum = {
 } as const
 
 export type RobotScalarFieldEnum = (typeof RobotScalarFieldEnum)[keyof typeof RobotScalarFieldEnum]
+
+
+export const RobotPositionScalarFieldEnum = {
+  id: 'id',
+  robotId: 'robotId',
+  lat: 'lat',
+  lon: 'lon',
+  createdAt: 'createdAt'
+} as const
+
+export type RobotPositionScalarFieldEnum = (typeof RobotPositionScalarFieldEnum)[keyof typeof RobotPositionScalarFieldEnum]
 
 
 export const SortOrder = {

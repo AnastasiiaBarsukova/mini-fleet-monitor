@@ -49,3 +49,8 @@ export type User = Prisma.UserModel
  * 
  */
 export type Robot = Prisma.RobotModel
+/**
+ * Model RobotPosition
+ * 
+ */
+export type RobotPosition = Prisma.RobotPositionModel
