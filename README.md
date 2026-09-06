@@ -51,3 +51,19 @@ PATCH /robots/:id/status
 GET /robots/:id/positions?date=YYYY-MM-DD
 
 ## Screenshots
+
+### Login
+
+![Login](./screenshots/login.png)
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### Add Robot
+
+![Add Robot](./screenshots/addRobot.png)
+
+### History
+
+![History](./screenshots/history.png)
